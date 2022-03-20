@@ -469,7 +469,7 @@ func (vlog *valueLog) rewrite(f *file.LogFile) error {
 		}
 		if vlog.iteratorCount() == 0 {
 			delete(vlog.filesMap, f.FID)
-			deleteFileNow = true
+			//deleteFileNow = true
 		} else {
 			vlog.filesToBeDeleted = append(vlog.filesToBeDeleted, f.FID)
 		}
@@ -999,11 +999,6 @@ func (vlog *valueLog) sync(fid uint32) error {
 	err := curlf.Sync()
 	curlf.Lock.RUnlock()
 	return err
-}
-
-// StartGC
-func (v *valueLog) startGC() {
-
 }
 
 // Set
